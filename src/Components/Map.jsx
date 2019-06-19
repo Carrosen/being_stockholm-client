@@ -25,16 +25,14 @@ class Map extends Component {
     });
   }
 
-  Hide() {
-      this.props.sidebarVisible = true ? 
-      this.props.dispatch({ type: 'HIDE_SIDEBAR'}) :
-      '';  
-    }
-  
   render() {
+    const hide = this.props.sidebarVisible? (
+    this.props.dispatch({ type: 'HIDE_SIDEBAR'})
+    ) : (
+    null)  
 
     return (
-      <div id='map' onClick={this.Hide} >
+      <div id='map' onClick={hide} >
     
         <Icon
           id='map-icon-plus'
