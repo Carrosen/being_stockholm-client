@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import moment from 'moment'
-import { Container, Image, Icon, Header } from 'semantic-ui-react'
+import { Container, Image, Icon, Header, Button, Sidebar, Segment } from 'semantic-ui-react'
+import { connect } from 'react-redux'
+import ImageEntryMessage from './ImageEntryMessage'
 
 class EntryPopup extends Component {
 
@@ -12,7 +14,9 @@ class EntryPopup extends Component {
     image: '',
     latitude: '',
     longitude: '',
-    address: ''
+    address: '',
+    messageVisible: false,
+    deleteMessage: false
   }
 
   async componentDidMount() {
@@ -28,7 +32,38 @@ class EntryPopup extends Component {
     })
   }
 
+  deletePost = () => {
+    axios.delete(`/api/v1/posts/${this.props.id}`)
+    this.handleMessageVisibility()
+    this.props.closeModal()
+  }
+
+  handleDeleteMessage = () => {
+    this.setState({ messageVisible: true, deleteMessage: true })
+  }
+
+  handleMessageVisibility = animation => () =>
+  this.setState(prevState => ({ animation, messageVisible: !prevState.messageVisible }))
+
   render() {
+
+    let userSignedIn = this.props.currentUser.isSignedIn
+    let deleteButton
+
+    if (userSignedIn === true && this.props.admin === true) {
+      deleteButton = (
+        <>
+          <br></br>
+          <Button
+            id='delete-button'
+            onClick={this.handleDeleteMessage}
+          >
+            Delete
+          </Button>
+          <br></br>
+        </>
+      )
+    }
 
     let dateString = this.state.created_at
     let dateObj = new Date(dateString)
@@ -38,39 +73,60 @@ class EntryPopup extends Component {
 
     return (
       <>
-        <Container className={`entry-wrapper-${this.props.datapointClass}`} id='entry-wrapper'>
+        <Sidebar.Pushable as={Segment} textAlign='center' id='pushable-segment'>
+          <Container className={`entry-wrapper-${this.props.datapointClass}`} id='entry-wrapper'>
 
-          <Container id='entry-image-wrapper'>
-            <Image
-              fluid
-              rounded
-              centered
-              verticalAlign='top'
-              size='medium'
-              id={`image_${this.props.id}`}
-              alt='entry image'
-              src={this.state.image} />
-          </Container>
-
-          <Header id="entry-caption">
-            {this.state.caption}
-          </Header>
-
-          <Container id='entry-location'>
-            <Icon
-              name='map marker alternate'
+            <ImageEntryMessage
+              visible={this.state.messageVisible}
+              handleMessageVisibility={this.handleMessageVisibility}
+              deletePost={this.deletePost}
+              deleteMessage={this.state.deleteMessage}
             />
-            {this.state.address}
-          </Container>
 
-          <Container id='date-container'>
-            <p><i> {date} | {time} </i></p>
-          </Container>
+            <Sidebar.Pusher dimmed={this.state.messageVisible}>
+              <Container id='entry-image-wrapper'>
+                <Image
+                  fluid
+                  rounded
+                  centered
+                  verticalAlign='top'
+                  size='medium'
+                  id={`image_${this.props.id}`}
+                  alt='entry image'
+                  src={this.state.image} />
+              </Container>
 
-        </Container>
+              <Header id="entry-caption">
+                {this.state.caption}
+              </Header>
+
+              <Container id='entry-location'>
+                <Icon
+                  name='map marker alternate'
+                />
+                {this.state.address}
+              </Container>
+
+              <Container id='date-container'>
+                <p><i> {date} | {time} </i></p>
+              </Container>
+
+
+              <Container>
+                {deleteButton}
+              </Container>
+            </Sidebar.Pusher>
+          </Container>
+        </Sidebar.Pushable>
       </>
     )
   }
 }
 
-export default EntryPopup
+const mapStateToProps = state => ({
+  state: state,
+  currentUser: state.reduxTokenAuth.currentUser,
+  admin: state.reduxTokenAuth.currentUser.attributes.admin,
+})
+
+export default connect(mapStateToProps)(EntryPopup);

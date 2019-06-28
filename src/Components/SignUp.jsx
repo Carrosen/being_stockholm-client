@@ -159,7 +159,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   sidebarVisbilityHandler: () => ({
-    type: 'CHANGE_VISIBILITY'
+    type: 'CHANGE_SIDEBAR_VISIBILITY'
   }),
   registerUser
 }

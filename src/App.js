@@ -14,7 +14,6 @@ import Faq from './Components/Faq'
 import MyProfile from './Components/MyProfile'
 import AdminPage from './Components/AdminPage'
 import { connect } from 'react-redux'
-import Legend from './Components/Legend';
 
 
 class App extends Component {

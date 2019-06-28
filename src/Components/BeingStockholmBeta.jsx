@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Header, Container, Image, Segment, Sidebar, Divider } from 'semantic-ui-react'
+import { Header, Container, Image, Segment, Sidebar, Divider, Grid } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 
 class BeingStockholmBeta extends Component {
@@ -15,26 +15,45 @@ class BeingStockholmBeta extends Component {
 
             <Container className="views-ingress-container">
               <p>
-                This is our first web app to test the project idea in 2019.
+                This is our first web app to test the idea and platform in 2019.
                 </p>
             </Container>
             <br></br>
 
             <Container className="views-text-container">
               <p>
-                We are extremely grateful to the coaches and senior students at the <b><a href='https://craftacademy.se/english/' target='_blank' rel='noopener noreferrer'>Craft Academy</a></b> Coding Bootcamp who helped us to develop our concept into a beautiful working prototype as part of their final design project.
+                We are extremely grateful to the coaches and senior students at the <b><a href='https://craftacademy.se/english/' target='_blank' rel='noopener noreferrer'>Craft Academy</a></b> Coding Bootcamp who helped us to develop our concept into a beautiful working prototype as part of their three week final design project.
                 </p>
               <br></br>
               <p>
                 <b>Big thank you</b> for all your hard work, love and nerdery:
                 </p>
-              <p>
-                <i>In Stockholm:</i><a href='https://github.com/leiter007' target='_blank' rel='noopener noreferrer'>&nbsp;Felix Bonnier,</a><a href='https://github.com/Carrosen' target='_blank' rel='noopener noreferrer'>&nbsp;Carla Rosén,</a><a href='https://gtomaras-portfolio.netlify.com/' target='_blank' rel='noopener noreferrer'>&nbsp;George Tomaras</a>
+              <p className="views-team-location">
+                <i>In Stockholm:</i>
               </p>
               <p>
-                <i>In Gothenburg:</i><a href='https://www.linkedin.com/in/stefankarlberg' target='_blank' rel='noopener noreferrer'>&nbsp;Stefan Karlberg,&nbsp;</a><a href='https://www.linkedin.com/in/zane-neikena' target='_blank' rel='noopener noreferrer'>Zane Neikena</a>
+                <a href='https://github.com/leiter007' target='_blank' rel='noopener noreferrer'>&nbsp;Felix Bonnier,</a><a href='https://github.com/Carrosen' target='_blank' rel='noopener noreferrer'>&nbsp;Carla Rosén,</a><a href='https://gtomaras-portfolio.netlify.com/' target='_blank' rel='noopener noreferrer'>&nbsp;George Tomaras</a>
               </p>
-              <br></br>
+
+              <Segment className="image-segment-left">
+              <div>
+                <Image className="views-image" src='craft_team_photo.jpg' size='large'></Image>
+              </div>
+            </Segment>
+
+              <p className="views-team-location">
+                <i>In Gothenburg:</i>
+              </p>
+              <p>
+                <a href='https://www.linkedin.com/in/stefankarlberg' target='_blank' rel='noopener noreferrer'>&nbsp;Stefan Karlberg,&nbsp;</a><a href='https://www.linkedin.com/in/zane-neikena' target='_blank' rel='noopener noreferrer'>Zane Neikena</a>
+              </p>
+
+              <Segment className="image-segment-left">
+              <div>
+                <Image className="views-image" src='craft_team_photo_gbg.jpg' size='large'></Image>
+              </div>
+            </Segment>
+
               <p>
                 <b>Special thanks:</b>
               </p>
@@ -44,27 +63,19 @@ class BeingStockholmBeta extends Component {
             </Container>
             <br></br>
 
-            <Segment className="image-segment-left">
-              <div>
-                <Image className="views-image" src='craft_team_photo.jpg' size='medium'></Image>
-                <br></br>
-                <p className="image-segment-label" >CraftAcademy squad - GOTHENBURG TO BE ADDED!</p>
-              </div>
-            </Segment>
-
             <Divider></Divider>
 
             <Header className="views-second-header" as='h3'>
               Next steps
-              </Header>
+            </Header>
 
             <Container className="views-text-container">
               <p>
                 After this beta testing, we will curate an exhibition of how Stockholmers work and play and release an update to the app.
-                </p>
+              </p>
               <p>
                 <a href='https://urbanbeings.us18.list-manage.com/subscribe?u=511ba4646c76ccebddfc09524&id=4b6589bfcd' target="_blank" rel='noopener noreferrer'>Subscribe </a>to our mailing list to stay updated on our next steps!
-                </p>
+              </p>
             </Container>
 
           </Container>

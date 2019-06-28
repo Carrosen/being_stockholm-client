@@ -29,6 +29,7 @@ class Map extends Component {
 
   closeModal = () => {
     this.setState({ openEntryPopup: false })
+    this.axiosGetPublishedPosts()
   }
 
   componentDidMount() {
@@ -110,8 +111,10 @@ class Map extends Component {
 
   render() {
 
+
     let createEntry
     let userSignedIn = this.props.currentUser.isSignedIn
+
 
     if (userSignedIn === true) {
       createEntry = (
@@ -152,6 +155,7 @@ class Map extends Component {
             <EntryPopup
               id={this.state.id}
               datapointClass={this.state.datapointClass}
+              closeModal={this.closeModal}
             />
           </div>
         </Popup>

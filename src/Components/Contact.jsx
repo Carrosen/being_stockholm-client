@@ -22,7 +22,7 @@ class Contact extends Component {
 
             <Container className="views-text-container">
               <p>
-                We are particularly interested to build up a network of partners who would like to make the Stockholm region as welcoming and inclusive as possible for its residents, such as the public sector, major employers of internationals and those working on social cohesion and integration.
+                We are particularly interested to build up a network of partners who would like to make the Stockholm region as welcoming and inclusive as possible for its residents, such as the public authorities, major employers of internationals and those working on social cohesion and integration.
                 </p>
             </Container>
             <br></br>

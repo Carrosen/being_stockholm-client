@@ -65,6 +65,26 @@ class ImageEntryMessage extends Component {
       )
     }
 
+    if (this.props.deleteMessage === true) {
+      message = (
+        <>
+          <h5>Are you sure?</h5>
+          <Button 
+            id='confirm-delete-button'
+            onClick={this.props.deletePost}>
+            Yes, delete it!
+          </Button>
+
+          <Button 
+            id='cancel-delete-button'
+            onClick={this.props.handleMessageVisibility('overlay')}
+          >
+            No, don't!
+          </Button>
+        </>
+      )
+    }
+
     return (
       <>
         <Sidebar

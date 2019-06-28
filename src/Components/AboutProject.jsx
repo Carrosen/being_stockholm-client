@@ -51,7 +51,7 @@ class AboutProject extends Component {
             <Grid>
               <Grid.Column>
                 <Container className="views-text-container">
-                  <Segment className="image-segment-left" floated="left">
+                  <Segment className="image-segment-left">
                     <div>
                       <Image className="views-image" src='yat.png' size='small'></Image>
                       <p className="image-segment-label-1" >Yatwan Hui</p>

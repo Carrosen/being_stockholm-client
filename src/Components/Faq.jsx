@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Header, Sidebar, Container, List } from 'semantic-ui-react'
+import { Header, Sidebar, Container, List, Grid, Image } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
@@ -12,6 +12,57 @@ class Faq extends Component {
           <Header className="views-main-header" as='h1'>
             FAQs
           </Header>
+          <br></br>
+
+          <Header className="views-third-header" as='h4'>
+            What do the colour dots mean?
+          </Header>
+          <Container className="views-text-container">
+            <p>
+              Each post is colour coded to show whether it is showing a Newbie or Settled Stockholmer at work or play. If you’re logged into your accounts, your posts will also have their own colours!
+            </p>
+          </Container>
+          <br></br>
+
+          <Grid columns={2}>
+              <Grid.Column>
+                <div>
+                  <Image className="views-image" src='legend.jpg' size='medium'></Image>
+                </div>
+              </Grid.Column>
+              <Grid.Column>
+              </Grid.Column>
+            </Grid>
+            <br></br>
+
+          <Header className="views-third-header" as='h4'>
+            What does mean to be a Newbie or Settled Stockholmer?
+          </Header>
+          <Container className="views-text-container">
+            <p>
+              This is entirely up to the user - depending how new or settled <b>they feel</b> living in Stockholm. Someone living in Stockholm for just a few months may feel more settled than someone living here for a few years. Someone who was born in Stockholm but returned after living abroad may feel like a Newbie.
+            </p>
+            
+          </Container>
+          <br></br>
+
+          <Header className="views-third-header" as='h4'>
+            What counts as work or play?
+          </Header>
+          <Container className="views-text-container">
+            <p>
+              <i>Does having fun playing ping pong in the office count as work or play?</i>
+            </p>
+            <p>
+            <i>Does doing DIY at your summer house count as work or play?</i>
+            </p>
+            <p>
+              Again, this is entirely up to the user. 
+            </p>
+            <p>
+              Sweden is known for its quality of life and value for a good work-life balance, so we want to see if Stockholmers strike this (or not). We want to see the different ways of working in today’s interconnected and changing workplaces and make it easier for newcomers to see how the locals spend their free time. Is it true that all the Settled Stockholmers are having a fika at their summer houses on weekends? 
+            </p>
+          </Container>
           <br></br>
 
           <Header className="views-third-header" as='h4'>
@@ -93,10 +144,19 @@ class Faq extends Component {
               Your posts will help inspire fellow Stockholmers to explore new places and try new activities! It will be colour coded to show whether it’s submitted by a new or settled Stockholm at work or play. Your personal information will not be visible.
             </p>
             <p>
-              Your posts will also help us to understand where and how new and settled Stockholmers work and play. We plan to work with public authorities to help them design, plan and promote the city with a citizen-sourced map.
-            </p>
+              Your posts will also help us to understand where and how new and settled Stockholmers work and play. We plan to work with public authorities to help them design, plan and promote the city with a citizen-powered map.             </p>
             <p>
               All the data collected will only be used by Urban Beings as part of our research and development. Your posts may be used to promote the project online and in exhibitions, but your personal information (name, email, gender etc) will never be shared with any other third parties.
+            </p>
+          </Container>
+          <br></br>
+
+          <Header className="views-third-header" as='h4'>
+            I don’t live in Stockholm - can I still take part?
+          </Header>
+          <Container className="views-text-container">
+            <p>
+              Sorry, not at the moment. We will let you know once this is available in your city! In the meanwhile, you’re very welcome to see the photos posted by Newbie and Settled Stockholmers.
             </p>
           </Container>
           <br></br>

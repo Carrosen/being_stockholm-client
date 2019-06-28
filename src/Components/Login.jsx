@@ -46,7 +46,7 @@ class Login extends Component {
       message = (
         <>
           <br />
-          <Message color="green">
+          <Message success>
             <p>You have succesfully logged in!</p>
           </Message>
         </>
@@ -55,7 +55,7 @@ class Login extends Component {
       message = (
         <>
           <br />
-          <Message color="red">
+          <Message negative>
             <p>{this.state.errorsLogin}</p>
           </Message>
         </>
@@ -63,7 +63,6 @@ class Login extends Component {
     }
     return (
       <Sidebar.Pushable as={Container} id="views-main-container-sidebar" onClick={this.props.sidebarVisible ? () => { this.props.sidebarVisbilityHandler() } : () => { }}>
-
         <Container className="views-main-container" textAlign='center'>
 
           <Header className="views-main-header" as='h1'>
@@ -125,7 +124,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   sidebarVisbilityHandler: () => ({
-    type: 'CHANGE_VISIBILITY'
+    type: 'CHANGE_SIDEBAR_VISIBILITY'
   }),
   signInUser
 }
