@@ -16,16 +16,15 @@ class EntryPopup extends Component {
   }
 
   async componentDidMount() {
-    await axios.get('/api/v1/posts/' + `${this.props.id}`).then(response => {
-      this.setState({
-        caption: response.data.caption,
-        category: response.data.category,
-        created_at: response.data.created_at,
-        image: response.data.image,
-        latitude: response.data.latitude,
-        longitude: response.data.longitude,
-        address: response.data.address
-      })
+    let response = await axios.get(`/api/v1/posts/${this.props.id}`)
+    this.setState({
+      caption: response.data.caption,
+      category: response.data.category,
+      created_at: response.data.created_at,
+      image: response.data.image,
+      latitude: response.data.latitude,
+      longitude: response.data.longitude,
+      address: response.data.address
     })
   }
 
@@ -39,7 +38,7 @@ class EntryPopup extends Component {
 
     return (
       <>
-        <Container className={`entry-wrapper-${this.props.datapointClass}`}id='entry-wrapper'>
+        <Container className={`entry-wrapper-${this.props.datapointClass}`} id='entry-wrapper'>
 
           <Container id='entry-image-wrapper'>
             <Image

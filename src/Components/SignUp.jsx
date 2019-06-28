@@ -34,7 +34,7 @@ class SignUp extends Component {
       level,
     } = this.state
     registerUser({ email, password, password_confirmation, level })
-      .then(response => {
+      .then(() => {
         this.setState({ message: true })
         setTimeout(function () { history.push('/') }, 1000)
       }).catch(error => {
@@ -43,7 +43,7 @@ class SignUp extends Component {
           message: false
         })
       })
-    
+
   }
 
   render() {
@@ -77,8 +77,8 @@ class SignUp extends Component {
       )
     }
     return (
-      <Sidebar.Pushable as={Container} id="views-main-container-sidebar">
-        <Container className="views-main-container"textAlign='center'>
+      <Sidebar.Pushable as={Container} id="views-main-container-sidebar" onClick={this.props.sidebarVisible ? () => { this.props.sidebarVisbilityHandler() } : () => { }}>
+        <Container className="views-main-container" textAlign='center'>
 
           <Header className="views-main-header" as='h1'>
             Sign up
@@ -110,8 +110,8 @@ class SignUp extends Component {
           </Form>
 
           <p
-          className='text'>
-          I am a</p>
+            className='text'>
+            I am a</p>
 
           <Button.Group
             className='button-group'
@@ -133,29 +133,35 @@ class SignUp extends Component {
               </Button>
           </Button.Group>
           <p
-          className='text'>
-          Stockholmer</p>
+            className='text'>
+            Stockholmer</p>
 
 
           <Container className="signup-text-container">
             <p>
-            By signing up, I allow my posts to be used for the Being Stockholm map and website. It may be used by UrbanBeings for marketing purposes. Your personal information will not be displayed publicly or shared with any third parties.
+              By signing up, I allow my posts to be used for the Being Stockholm map and website. It may be used by UrbanBeings for marketing purposes. Your personal information will not be displayed publicly or shared with any third parties.
             </p>
           </Container>
 
           <Button className='submit-button' id="sign_up_button" onClick={this.createUser}>Sign up</Button>
 
         </Container>
-      </Sidebar.Pushable>  
+      </Sidebar.Pushable>
     )
   }
 }
 const mapStateToProps = (state) => {
   return {
-    currentUser: state.reduxTokenAuth.currentUser
+    currentUser: state.reduxTokenAuth.currentUser,
+    sidebarVisible: state.animation.sidebarVisible
   }
 }
-export default connect(
-  mapStateToProps,
-  { registerUser },
-)(SignUp)
+
+const mapDispatchToProps = {
+  sidebarVisbilityHandler: () => ({
+    type: 'CHANGE_VISIBILITY'
+  }),
+  registerUser
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp)

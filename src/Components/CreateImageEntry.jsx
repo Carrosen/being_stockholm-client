@@ -45,7 +45,7 @@ class CreateImageEntry extends Component {
         this.geolocationDataCoords()
       },
       error => {
-        console.error(error);
+        this.setState({ messageVisible: true, errorMessage: true, errors: [error] })
       }
     )
   }
@@ -61,13 +61,13 @@ class CreateImageEntry extends Component {
         })
       },
       error => {
-        console.error(error);
+        this.setState({ messageVisible: true, errorMessage: true, errors: [error] })
       }
     )
   }
 
   onImageDropHandler = (pictureFiles, pictureDataURLs) => {
-    if (pictureFiles.length > 0){
+    if (pictureFiles.length > 0) {
       this.setState({
         button: 'hide-button'
       })
@@ -124,7 +124,7 @@ class CreateImageEntry extends Component {
       user_id: this.props.currentUser.attributes.id
     }
     axios.post(path, payload)
-      .then(response => {
+      .then( () => {
         this.setState({
           successMessage: true,
           errorMessage: false,
@@ -186,18 +186,18 @@ class CreateImageEntry extends Component {
       } else if (this.state.address === "No location data detected") {
         addressSearch = (
           <div className="change-address-link">
-            <a onClick={() => { this.setState({ addressSearch: true }) }}>
+            <p className='address-change' onClick={() => { this.setState({ addressSearch: true }) }}>
               Enter address manually
-            </a>
+            </p>
           </div>
         )
       }
       else {
         addressSearch = (
           <div className="change-address-link">
-            <a onClick={() => { this.setState({ addressSearch: true }) }}>
+            <p className='address-change' onClick={() => { this.setState({ addressSearch: true }) }}>
               Change location
-            </a>
+            </p>
           </div>
         )
       }
@@ -255,7 +255,7 @@ class CreateImageEntry extends Component {
 
               <Container>
                 {addressSearch}
-                </Container>
+              </Container>
               
               <p id="image-upload-button-headline">3. I am at:</p>
               

@@ -33,16 +33,15 @@ class AdminPage extends Component {
   }
 
   combineFunctions = () => {
-    this.props.dispatch({ type: 'CHANGE_VISIBILITY' })
+    this.props.dispatch({ type: 'CHANGE_SIDEBAR_VISIBILITY' })
     this.axiosGetUnpublished()
   }
 
   async axiosGetUnpublished() {
-    await axios.get('/api/v1/posts').then(response => {
-      this.setState({ posts: response.data })
-    })
+    let response = await axios.get('/api/v1/posts')
+    this.setState({ posts: response.data })
     let unpublished = []
-    await this.state.posts.map(post => {
+    this.state.posts.forEach(post => {
       if (post.status === 'pending') {
         unpublished.push(post)
       }
@@ -93,9 +92,9 @@ class AdminPage extends Component {
               onClose={this.closeModal}>
 
               <div className="modal">
-                <AdminPopup 
-                id={this.state.id} 
-                datapointClass={this.state.datapointClass}
+                <AdminPopup
+                  id={this.state.id}
+                  datapointClass={this.state.datapointClass}
                 />
               </div>
             </Popup>

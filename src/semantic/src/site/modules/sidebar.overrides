@@ -1,3 +1,49 @@
 /*******************************
          Site Overrides
 *******************************/
+
+
+/*******************************
+         Legend
+*******************************/
+
+.ui.bottom.sidebar {
+  height: 140px !important;
+  margin-bottom: 20px !important;
+  border: none !important;
+ }
+
+.ui.overlay.bottom.visible.sidebar.legend-content {
+  margin-bottom: 0px !important;
+}
+
+.ui.segment.ui.overlay.bottom.sidebar.legend-content {
+  visibility: visible !important;
+}
+
+.ui.segment.ui.overlay.bottom.animating.sidebar.legend-content {
+  margin-bottom: -20px !important;
+  height: 160px !important;
+}
+
+.legend-padding {
+  padding: 0px !important;
+}
+
+.legend-icon {
+  line-height: 0.3 !important;
+}
+    
+.legend-grid-column {
+  padding-left:0px !important;
+  padding-right:0px !important;
+}
+
+@media only screen and (min-width: 600px) {
+  .ui.grid.legend-grid {
+    max-width: 500px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+

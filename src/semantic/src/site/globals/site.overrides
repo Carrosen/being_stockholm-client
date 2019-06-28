@@ -9,6 +9,7 @@
 
 a {
   color: #f2711c;
+  cursor: pointer;
 }
 
 a:hover {
@@ -18,6 +19,26 @@ a:hover {
 h2 {
   color: #f2711c !important;
   font-size: 1.5rem !important;
+}
+
+.fake-link {
+  color: #f2711c!important;
+  cursor: pointer!important;
+  font-size: 14px!important;
+}
+
+.fake-link:hover {
+  color: #A65F18!important;
+}
+
+.disable-scrollbars::-webkit-scrollbar {
+   width: 0px;
+   background: transparent; /* Chrome/Safari/Webkit */
+}
+
+.disable-scrollbars {
+ scrollbar-width: none; /* Firefox */
+ -ms-overflow-style: none;  /* IE 10+ */
 }
 
 /*******************************
@@ -93,6 +114,7 @@ h2 {
 /*******************************
   Views - directed from menu
 *******************************/
+
 #views-main-container-sidebar {
   width: 100% !important;
 }
@@ -429,6 +451,13 @@ h2 {
   font-size: 15px;
 }
 
+.address-change {
+  font-size: 12px !important;
+  color: #808080 !important;
+  max-width: 100% !important;
+  cursor: pointer;
+}
+
 /*******************************
   Popup - Single Image Entry
 *******************************/
@@ -529,7 +558,7 @@ h2 {
   .my-profile-entry-data {
   margin: 5px 0px 0px 0px !important;
   padding: 0px 10px 10px 10px !important
-}
+  }
 
   h3.my-profile-caption {
   margin: 0px !important;
@@ -556,6 +585,49 @@ h2 {
   }
 
 }
+
+/*******************************
+         Legend
+*******************************/
+
+  #circle-my-work {
+    color: #312783;
+    font-size: 1em !important
+  }
+
+  #circle-settled-work {
+    color: #951b81;
+    font-size: 1em !important
+  }
+
+  #circle-newbie-work {
+    color: #e6007e;
+    font-size: 1em !important
+  }
+
+  #circle-my-play {
+    color: #00a19a;
+    font-size: 1em !important
+  }
+
+  #circle-settled-play {
+    color: #006633;
+    font-size: 1em !important
+  }
+
+  #circle-newbie-play {
+    color: #95c11f;
+    font-size: 1em !important
+  }
+
+  .ui.grid.legend-grid h4{
+    margin: 0px 10px 10px 10px !important;
+    color: grey;
+  }
+
+  .level-text-legend {
+    color: #f2711c !important;
+  }
 
 
 /*******************************

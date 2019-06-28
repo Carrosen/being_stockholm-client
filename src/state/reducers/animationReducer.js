@@ -1,12 +1,17 @@
 const initialState = {
-  sidebarVisible: false
+  sidebarVisible: false,
+  legendVisible: false,
 }
 
-const locationReducer = (state = initialState, action) => {
+const animationReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'CHANGE_VISIBILITY':
+    case 'CHANGE_SIDEBAR_VISIBILITY':
       return {
         sidebarVisible: !state.sidebarVisible
+      }
+    case 'CHANGE_LEGEND_VISIBILITY':
+      return {
+        legendVisible: !state.legendVisible
       }
     case 'CREATE_IMAGE_POST':
       return {
@@ -21,4 +26,4 @@ const locationReducer = (state = initialState, action) => {
   }
 }
 
-export default locationReducer
+export default animationReducer

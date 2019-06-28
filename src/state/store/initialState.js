@@ -1,5 +1,6 @@
 const initialState = {
   sidebarVisible: false,
+  legendVisible: false,
   reduxTokenAuth: {
     currentUser: {
       isLoading: false,

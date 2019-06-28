@@ -14,7 +14,7 @@ class MenuSidebar extends Component {
     e.preventDefault()
     const { history, signOutUser } = this.props
     signOutUser()
-      .then(response => {
+      .then( () => {
         this.handleSidebarVisibilty()
         history.push('/')
       })
@@ -98,7 +98,6 @@ class MenuSidebar extends Component {
           as={Link}
           to='/'
           onClick={this.openPopUp}
-          as={Link}
         >
         Add a photo
       </Header>
@@ -208,7 +207,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   sidebarVisbilityHandler: sidebarVisible => ({
-    type: 'CHANGE_VISIBILITY',
+    type: 'CHANGE_SIDEBAR_VISIBILITY',
     sidebarVisbible: sidebarVisible
   }),
   createImageHandler: () => ({

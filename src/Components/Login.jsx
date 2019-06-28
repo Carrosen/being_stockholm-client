@@ -26,7 +26,7 @@ class Login extends Component {
       password
     } = this.state
     signInUser({ email, password })
-      .then(response => {
+      .then(() => {
         this.setState({ message: true })
         setTimeout(function () { history.push('/') }, 1000)
       }).catch(error => {
@@ -46,7 +46,7 @@ class Login extends Component {
       message = (
         <>
           <br />
-          <Message success>
+          <Message color="green">
             <p>You have succesfully logged in!</p>
           </Message>
         </>
@@ -55,27 +55,27 @@ class Login extends Component {
       message = (
         <>
           <br />
-          <Message negative>
-            <Message.Header>Ooops!</Message.Header>
+          <Message color="red">
             <p>{this.state.errorsLogin}</p>
           </Message>
         </>
       )
     }
     return (
-      <Sidebar.Pushable as={Container} id="views-main-container-sidebar">
-        <Container className="views-main-container"textAlign='center'>
+      <Sidebar.Pushable as={Container} id="views-main-container-sidebar" onClick={this.props.sidebarVisible ? () => { this.props.sidebarVisbilityHandler() } : () => { }}>
+
+        <Container className="views-main-container" textAlign='center'>
 
           <Header className="views-main-header" as='h1'>
-            Log in
+            Log In
           </Header>
           <br></br>
-          {message}
           <br></br>
 
-          <Form 
-          id="login-form" 
-          onSubmit={this.onSubmit}
+          <p>{message}</p>
+          <Form
+            id="login-form"
+            onSubmit={this.onSubmit}
           >
 
             <Form.Input
@@ -93,31 +93,41 @@ class Login extends Component {
               onChange={this.onChangeHandler}
               placeholder="Password"
             />
-              <br></br>
+            <br></br>
 
-            <Button className="submit-button" id="login_form_button">Log in</Button>
+            <Button className="submit-button" id="login_form_button">Login</Button>
           </Form>
 
           <br></br>
           <br></br>
 
           <Header
-          className='text'
-          id="sign_up_link"
-          as={Link}
-          to='sign-up'
+            className='text'
+            id="sign_up_link"
+            as={Link}
+            to='sign-up'
           >
-            Not registered? Create an account now!
+            Not registered? Create an account!
           </Header>
 
         </Container>
-      </Sidebar.Pushable>    
+      </Sidebar.Pushable>
     )
   }
 }
+
 const mapStateToProps = (state) => {
   return {
-    currentUser: state.reduxTokenAuth.currentUser   
+    currentUser: state.reduxTokenAuth.currentUser,
+    sidebarVisible: state.animation.sidebarVisible
   }
 }
-export default connect(mapStateToProps,{ signInUser },)(Login)
+
+const mapDispatchToProps = {
+  sidebarVisbilityHandler: () => ({
+    type: 'CHANGE_VISIBILITY'
+  }),
+  signInUser
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

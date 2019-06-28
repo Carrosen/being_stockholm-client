@@ -14,6 +14,7 @@ import Faq from './Components/Faq'
 import MyProfile from './Components/MyProfile'
 import AdminPage from './Components/AdminPage'
 import { connect } from 'react-redux'
+import Legend from './Components/Legend';
 
 
 class App extends Component {
@@ -23,8 +24,9 @@ class App extends Component {
       <>
         <Sidebar.Pushable
           as={Container}
+          className='disable-scrollbars'
           id='main-content'>
-
+         
           <Switch>
             <Route exact path='/' component={Map}></Route>
             <Route exact path='/admin' component={AdminPage}></Route>
